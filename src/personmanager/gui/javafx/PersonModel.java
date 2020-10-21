@@ -1,9 +1,7 @@
-package sample.gui;
+package personmanager.gui.javafx;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
 
 public class PersonModel {
 

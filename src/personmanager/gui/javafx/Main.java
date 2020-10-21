@@ -1,4 +1,4 @@
-package sample.gui;
+package personmanager.gui.javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

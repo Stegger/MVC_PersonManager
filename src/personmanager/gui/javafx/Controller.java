@@ -1,4 +1,4 @@
-package sample.gui;
+package personmanager.gui.javafx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
