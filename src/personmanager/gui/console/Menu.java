@@ -75,6 +75,9 @@ public abstract class Menu {
      * @return A valid menu option.
      */
     private int getOption() {
+        System.out.print("Please enter your choice:");
+
+
         return 0; // Dummy value.
     }
 
@@ -87,6 +90,15 @@ public abstract class Menu {
      * options in the menu.
      */
     private void showMenu() {
+        System.out.println(header);
+        int i = 1;
+        for(String menuItem : menuItems)
+        {
+            System.out.println(i + ": " + menuItem);
+            i++;
+        }
+        System.out.println(EXIT_OPTION + ": Exit");
+
     }
 
     /**
@@ -98,6 +110,14 @@ public abstract class Menu {
     /**
      * Clears the screen by writing several empty lines.
      */
-    protected void clear() {
+    protected void clear()
+    {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
+
 }
