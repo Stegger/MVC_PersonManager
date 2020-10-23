@@ -6,8 +6,7 @@ import personmanager.be.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonManager
-{
+public class PersonManager {
 
     private List<Person> allPersons;
 
@@ -15,8 +14,7 @@ public class PersonManager
         allPersons = new ArrayList<>();
     }
 
-    public void addPerson(Person person)
-    {
+    public void addPerson(Person person) {
         allPersons.add(person);
     }
 
@@ -24,21 +22,15 @@ public class PersonManager
         return allPersons;
     }
 
-    public List<Teacher> getAllTeachers()
-    {
+    public List<Teacher> getAllTeachers() {
         List<Teacher> allTeachers = new ArrayList<>();
 
-        for(Person person : allPersons)
-        {
-            if(person instanceof Teacher)
-            {
+        for (Person person : allPersons) {
+            if (person instanceof Teacher) {
                 Teacher teacher = (Teacher) person;
                 allTeachers.add(teacher);
             }
         }
-
-
-
         return allTeachers;
     }
 
