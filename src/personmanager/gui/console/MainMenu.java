@@ -1,16 +1,19 @@
 package personmanager.gui.console;
 
+import personmanager.bll.PersonManager;
+
 public class MainMenu extends Menu {
+
+    private PersonManager personManager;
 
     /**
      * Creates an instance of the class with the given header text and
      * menu options.
      *
-     * @param header    The header text of the menu.
-     * @param menuItems The list of menu items texts.
      */
-    public MainMenu() {
+    public MainMenu(PersonManager personManager) {
         super("Main menu", "Students Menu", "Teachers Menu");
+        this.personManager = personManager;
     }
 
     /**
@@ -22,6 +25,18 @@ public class MainMenu extends Menu {
      */
     @Override
     protected void doAction(int option) {
+        switch (option)
+        {
+            case 1:
+                showStudentsMenu();
+                break;
 
+        }
+    }
+
+    private void showStudentsMenu()
+    {
+        StudentMenu studentMenu = new StudentMenu(personManager);
+        studentMenu.run();
     }
 }

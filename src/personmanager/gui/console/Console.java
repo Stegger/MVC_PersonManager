@@ -12,19 +12,11 @@ import java.util.List;
 
 public class Console {
 
-    public static void main(String[] args)
-    {
-        Student student = new Student(1, "Peter", "peter@easv365.dk", "DMU");
+    public static void main(String[] args) {
 
-        student.addGrade(new GradeInfo("SCO", 12));
-        student.addGrade(new GradeInfo("SDE", 4));
-        student.addGrade(new GradeInfo("ITO", 10));
-
-        System.out.println("Average: " + student.getAverageGrade());
-
-
-        //MainMenu mainMenu = new MainMenu();
-        //mainMenu.run();
+        PersonManager personManager = new PersonManager();
+        MainMenu mainMenu = new MainMenu(personManager);
+        mainMenu.run();
 
     }
 

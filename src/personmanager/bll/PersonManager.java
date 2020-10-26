@@ -5,9 +5,11 @@ import personmanager.be.Student;
 import personmanager.be.Teacher;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class PersonManager {
+
 
     private List<Person> allPersons;
 
@@ -15,22 +17,59 @@ public class PersonManager {
         allPersons = new ArrayList<>();
     }
 
-    public void addPerson(Person person) {
-        allPersons.add(person);
+    public void addPerson(Person person)
+    {
+        if (getPerson(person.getId()) == null) {
+            allPersons.add(person);
+        }
+    }
+
+    /**
+     * Gets the Person object with the given ID.
+     *
+     * @param id The ID of the Person to search for.
+     * @return The Person with the given ID, or Null if no such person exists.
+     */
+    public Person getPerson(int id) {
+        for (Person person : allPersons) {
+            if (person.getId() == id) {
+                return person;
+            }
+        }
+        return null;
+    }
+
+    public Person getPersonBinary(int id) {
+        allPersons.sort((o1, o2) -> o1.getId() - o2.getId());
+
+        int first = 0;
+        int last = allPersons.size() - 1;
+
+        while (first <= last) {
+            int middle = last + ((first - last) / 2);
+
+            Person middlePerson = allPersons.get(middle);
+
+            if (middlePerson.getId() == id) {
+                return middlePerson;
+            } else if (middlePerson.getId() < id) {
+                first = middle + 1;
+            } else {
+                last = middle - 1;
+            }
+        }
+        return null;
     }
 
     public List<Person> getAllPersons() {
         return allPersons;
     }
 
-    public List<Teacher> getAllTeachers()
-    {
+    public List<Teacher> getAllTeachers() {
         List<Teacher> allTeachers = new ArrayList<>();
 
-        for (Person person : allPersons)
-        {
-            if (person instanceof Teacher)
-            {
+        for (Person person : allPersons) {
+            if (person instanceof Teacher) {
                 Teacher teacher = (Teacher) person;
                 allTeachers.add(teacher);
             }
@@ -39,13 +78,10 @@ public class PersonManager {
         return allTeachers;
     }
 
-    public List<Student> getAllStudents()
-    {
+    public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
-        for(Person person : allPersons)
-        {
-            if(person instanceof Student)
-            {
+        for (Person person : allPersons) {
+            if (person instanceof Student) {
                 Student student = (Student) person;
                 students.add(student);
             }
