@@ -1,5 +1,7 @@
 package personmanager.gui.console;
 
+import java.util.Scanner;
+
 /**
  * Abstract class implementing the basic functionality of a console based
  * menu class. A menu can be created by sub-classing this class and implement
@@ -26,6 +28,9 @@ public abstract class Menu {
 
     // The list of menu options texts.
     private String[] menuItems;
+    private String inputText = "Please choose your menu option:";
+
+    protected Scanner scanner;
 
     /**
      * Abstract method stating what should be done, when a
@@ -47,6 +52,7 @@ public abstract class Menu {
     public Menu(String header, String... menuItems) {
         this.header = header;
         this.menuItems = menuItems;
+        scanner = new Scanner(System.in);
     }
 
     /**
@@ -75,10 +81,23 @@ public abstract class Menu {
      * @return A valid menu option.
      */
     private int getOption() {
-        System.out.print("Please enter your choice:");
-
-
-        return 0; // Dummy value.
+        System.out.println();
+        int nr = -1;
+        while (nr < 0) {
+            System.out.print(inputText);
+            String nrAsString = scanner.nextLine();
+            try {
+                nr = Integer.parseInt(nrAsString.trim());
+            } catch (NumberFormatException nfe) {
+                System.out.println("Invalid input, did you type a number?");
+            }
+            if (nr > menuItems.length) //If number is out of range, we change it to negative one
+            {
+                System.out.println("Please choose an option in range (0-" + menuItems.length + ")");
+                nr = -1;
+            }
+        }
+        return nr;
     }
 
     /**
@@ -90,34 +109,33 @@ public abstract class Menu {
      * options in the menu.
      */
     private void showMenu() {
+        clear();
         System.out.println(header);
         int i = 1;
-        for(String menuItem : menuItems)
-        {
+        for (String menuItem : menuItems) {
             System.out.println(i + ": " + menuItem);
             i++;
         }
         System.out.println(EXIT_OPTION + ": Exit");
-
     }
 
     /**
      * Waits until the 'enter' key is pressed.
      */
     protected void pause() {
+        System.out.println("Hit enter to continue...");
+        scanner.nextLine();
+
     }
 
     /**
      * Clears the screen by writing several empty lines.
      */
-    protected void clear()
-    {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+    protected void clear() {
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println();
+        }
     }
 
 }

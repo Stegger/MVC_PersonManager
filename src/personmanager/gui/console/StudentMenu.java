@@ -3,16 +3,17 @@ package personmanager.gui.console;
 import personmanager.be.Student;
 import personmanager.bll.PersonManager;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class StudentMenu extends Menu {
+
 
     private PersonManager personManager;
 
     /**
      * Creates an instance of the class with the given header text and
      * menu options.
-     *
-     * @param header    The header text of the menu.
-     * @param menuItems The list of menu items texts.
      */
     public StudentMenu(PersonManager personManager) {
         super("Student Menu", "Add student", "See all students");
@@ -27,10 +28,8 @@ public class StudentMenu extends Menu {
      * @param option the menu option that has been selected.
      */
     @Override
-    protected void doAction(int option)
-    {
-        switch (option)
-        {
+    protected void doAction(int option) {
+        switch (option) {
             case 1:
                 addStudent();
                 break;
@@ -42,16 +41,30 @@ public class StudentMenu extends Menu {
 
     private void seeAllStudents() {
         System.out.println("All students:");
-        for(Student student : personManager.getAllStudents())
-        {
+        for (Student student : personManager.getAllStudents()) {
             System.out.println(student);
         }
         pause();
     }
 
-    private void addStudent()
-    {
+    private void addStudent() {
+        System.out.print("Type student name:");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
 
+        System.out.print("Type student email:");
+        String email = scanner.nextLine();
+
+        System.out.print("Type student education:");
+        String education = scanner.nextLine();
+
+        System.out.print("Type student ID:");
+        int ID = scanner.nextInt();
+        scanner.nextLine();
+
+        Student student = new Student(ID, name, email, education);
+
+        personManager.addPerson(student);
     }
 
 }

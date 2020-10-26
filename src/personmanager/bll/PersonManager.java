@@ -6,6 +6,7 @@ import personmanager.be.Teacher;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PersonManager {
@@ -15,10 +16,12 @@ public class PersonManager {
 
     public PersonManager() {
         allPersons = new ArrayList<>();
+        //For test purpose only:
+        allPersons.add(new Student(1, "Little Jeppe", "lj@easv365.dk", "MultiMedia Design"));
+        allPersons.add(new Teacher(100, "Peter Stegger", "pgn@easv.dk"));
     }
 
-    public void addPerson(Person person)
-    {
+    public void addPerson(Person person) {
         if (getPerson(person.getId()) == null) {
             allPersons.add(person);
         }

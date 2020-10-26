@@ -2,21 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="personmanager.gui.javafx.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="personmanager.gui.javafx.mainView.Controller">
    <center>
       <ListView fx:id="lstPersons" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
-   <top>
+   <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="txtInput" />
-            <Button mnemonicParsing="false" onAction="#handleAddPerson" text="Add" />
+            <Button mnemonicParsing="false" onAction="#handleTeacherBtn" text="Teacher" />
+            <Button mnemonicParsing="false" onAction="#handleStudentBtn" text="Student" />
          </children>
       </HBox>
-   </top>
+   </bottom>
 </BorderPane>
