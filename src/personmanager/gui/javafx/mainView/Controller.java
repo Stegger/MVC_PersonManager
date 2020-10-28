@@ -37,8 +37,10 @@ public class Controller {
 
     public void handleStudentBtn(ActionEvent actionEvent) throws IOException {
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/personmanager/gui/javafx/studentView/StudentView.fxml"));
         Parent root = loader.load();
+
         StudentController studentController = loader.getController();
         studentController.setPersonModel(personModel);
 
